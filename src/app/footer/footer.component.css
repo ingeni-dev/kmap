@@ -1,0 +1,97 @@
+.footer{
+    display: flex;
+    background-color: #322434;
+    flex-shrink: 0;
+    flex-grow: 0; 
+    position: fixed;
+    bottom: 0;
+}
+.column{
+   
+}
+.bar{
+    margin-left: 1px;
+    margin-right: 1px;
+    text-align: center;
+    vertical-align: middle;
+}
+.Home{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 2px 2px;
+    margin: 2px 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+.Home p{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+.Message{
+    width: 50px;
+    height: 50px;
+    padding: 2px 2px;
+    margin: 2px 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+.Message p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #7D7D7D;
+    text-align: center;
+    vertical-align: middle;
+}
+.Work{
+    width: 50px;
+    height: 50px;
+    padding: 2px 2px;
+    margin: 2px 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+.Work p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #7D7D7D;
+    text-align: center;
+    vertical-align: middle;
+}
+.xxx{
+    width: 50px;
+    height: 50px;
+    padding: 2px 2px;
+    margin: 2px 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+.xxx p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #7D7D7D;
+    text-align: center;
+    vertical-align: middle;
+}
+.Profile{
+    width: 50px;
+    height: 50px;
+    padding: 2px 2px;
+    margin: 2px 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+.Profile p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #7D7D7D;
+    text-align: center;
+    vertical-align: middle;
+}
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+}
