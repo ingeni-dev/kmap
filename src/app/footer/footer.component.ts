@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'footer',
@@ -6,7 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class footerComponent {
+  // @Output() eventOut = new EventEmitter();
   title = '';
-  searchText='';
+ngOnInit(){
+}
 
+// onMessageClick(click: EventEmitter){
+//   var test = 'testt';
+//   console.log(click);
+//   this.eventOut.emit(test);
+// }
 }

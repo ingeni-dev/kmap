@@ -1,23 +1,25 @@
 <div class="container">
-<div class="header row">
-    <div class="head col-10">
-        <h1>
-            {{title}}
-        </h1>
-    </div>
-    
-    <div class="logout col-2">
-            <img src="assets/img/sign out.png" width="37" height="37">
-        
-    </div>
-</div>
-<div class="row">
-    <div class="col-4">
-        <div class="position">
-            <p>Programmer</p>
+    <div class="header row">
+        <div class="head col-10">
+            <h1>
+                {{title}}
+            </h1>
+        </div>
+
+        <div class="logout col-2">
+            <img src="assets/img/sign out.png" width="37" height="37" (click)="onClick()">
+
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-4">
+            <div class="position">
+                <p>
+                   {{userPosition}}
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- <div class="logout">

@@ -8,7 +8,7 @@
 
                 <div class="col-10 inputBox">
                     <input type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
-                        placeholder=ค้นหาแอปพลิเคชัน style="border: none;">
+                        placeholder=ค้นหาแอปพลิเคชัน style="border: none;" class="form-control">
                 </div>
                 <div class="col-2 searchIcon">
                     <img src="assets/img/search.png" class="img-fluid">
@@ -57,8 +57,12 @@
     </div>
     <div class="allapp row">
         <div class="col-12">
-            <div class="first row">
-                <div class="items-1 col-4">
+            <div class="first row"  >
+                <div class="items-1 col-4" *ngFor="let menua of menuAdmin">
+                    <img [src]="menua.img" style="width: 50px; height: 50px; " class="img-fluid">
+                    <p>{{menua.appName}}</p>
+                </div>
+                <!-- <div class="items-1 col-4"  *ngIf="userDetail.user_name==='admin'">
                     <img src="assets/img/ใบสรุปปัญหาเฉพาะหน้า.png" style="width: 50px; height: 50px; " class="img-fluid">
                     <p>ใบสรุปปัญหาเฉพาะหน้า</p>
                 </div>
@@ -69,12 +73,15 @@
                 <div class="items-3 col-4">
                     <img src="assets/img/ยอดขาย.png" style="width: 50px; height: 50px;" class="img-fluid">
                     <p>ยอดขาย</p>
-                </div>
+                </div> -->
             </div>
+            
 
-            <div class="second row">
-                <div class="items-4 col-4">
-                    <img src="assets/img/qr code.png" style="width: 50px; height: 50px;" class="img-fluid">
+            <!-- <div class="second row">
+                <div class="items-4 col-4" *ngFor="let menua of menuAdmin">
+                    <img [src]="menua.imgSrc" style="width: 50px; height:50px;" class="img-fluid">
+                    <p>{{menua.menuName</p> -->
+                    <!-- <img src="assets/img/qr code.png" style="width: 50px; height: 50px;" class="img-fluid">
                     <p>QR Code</p>
                 </div>
                 <div class="items-5 col-4">
@@ -84,10 +91,10 @@
                 <div class="items-6 col-4">
                     <img src="assets/img/จับเวลาการผลิต.png" style="width: 50px; height: 50px;" class="img-fluid">
                     <p>ระบบจับเวลาการผลิต</p>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
 
-            <div class="third row">
+            <!-- <div class="third row">
                 <div class="items-7 col-4">
                     <img src="assets/img/จัดการวัตถุดิบ.png" style="width: 50px; height: 50px;" class="img-fluid">
                     <p>ระบบจัดการวัตถุดิบ</p>
@@ -98,12 +105,12 @@
                 </div>
                 <div class="items-9 col-4">
                     <img src="assets/img/การสั่งซื้อ.png" style="width: 50px; height: 50px;" class="img-fluid">
-                    <p>ระบบการสั่งซื้อวัตถุดิบ</p>
-                </div>
+                    <p>ระบบการสั่งซื้อวัตถุดิบ</p> -->
+                    <!-- <li><a routerLink="/loginComponent" routerLinkActive="active">LogIn Component</a></li> -->
+                <!-- </div> -->
             </div>
-            
+          
         </div>
     </div>
 
 
-</div>
