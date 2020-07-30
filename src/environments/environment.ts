@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://192.168.55.76/ToppWebApi/api/auth/login',
+  apiUrl: 'http://localhost:5000/api/test',
+  // apiUrl: 'http://localhost:5000/api/',
   whitelist: ['localhost:5000', '192.168.55.76'],
-  blacklisted: ['localhost:5000/api/auth','192.168.55.76/ToppWebApi/api/auth']
+  blacklisted: ['localhost:5000/api','192.168.55.76/ToppWebApi/api/auth']
 };
 
 /*

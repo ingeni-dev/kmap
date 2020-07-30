@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { KmapService } from '../services/kmap.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
+
 export class mainComponent {
   title = '';
   searchText = '';
@@ -13,46 +16,60 @@ export class mainComponent {
   menuAdmin: IMenu[]; 
   //menuEmp: EmpMenu[];
 
-  constructor() {
+  constructor(private kmapService: KmapService) {
     
   }
 
 
   ngOnInit() {
+    
+    debugger;
     this.userDetail = JSON.parse(localStorage.getItem('userDetail'));
-
+    console.log(this.userDetail);
     this.getMockMenu();
+    
+    
+    // this.kmapService.getTest().then(res=>{
+    //   console.log(res);
+    // })
   }
 
   getMockMenu() {
-    this.menuAdmin = [{
-      img: 'assets/img/ใบสรุปปัญหาเฉพาะหน้า.png',
-      appName: 'ใบสรุปปัญหาเฉพาะหน้า'
-    }, {
-      img: 'assets/img/เอกสารควบคุมการเปลี่ยนแปลง.png',
-      appName: 'เอกสารควบคุมการเปลี่ยนแปลง'
-    }, {
-      img: 'assets/img/ยอดขาย.png',
-      appName: 'ยอดขาย'
-    },{
-      img: 'assets/img/qr code.png',
-      appName: 'QR Code'
-    },{
-      img: 'assets/img/คืนเบิกวัตถุดิบ.png',
-      appName: 'ระบบคืนเบิกวัตถุดิบ'
-    },{
-      img: 'assets/img/จับเวลาการผลิต.png',
-      appName: 'ระบบจับเวลาการผลิต'
-    },{
-      img: 'assets/img/จัดการวัตถุดิบ.png',
-      appName: 'ระบบจัดการวัตถุดิบ'
-    },{
-      img: 'assets/img/ระบบจัดการบุคคล.png',
-      appName: 'ระบบจัดการบุคคล'
-    },{
-      img: 'assets/img/การสั่งซื้อ.png',
-      appName: 'ระบบการสั่งซื้อวัตถุดิบ'
-    }];
+    this.kmapService.getMenuItem('620049').subscribe(result=>{
+      console.log(result);
+      
+
+       this.menuAdmin = [...result];
+       console.log('menuAdmin', this.menuAdmin);
+    })
+    // this.menuAdmin = [{
+    //   img: 'assets/img/ใบสรุปปัญหาเฉพาะหน้า.png',
+    //   appName: 'ใบสรุปปัญหาเฉพาะหน้า'
+    // }, {
+    //   img: 'assets/img/เอกสารควบคุมการเปลี่ยนแปลง.png',
+    //   appName: 'เอกสารควบคุมการเปลี่ยนแปลง'
+    // }, {
+    //   img: 'assets/img/ยอดขาย.png',
+    //   appName: 'ยอดขาย'
+    // },{
+    //   img: 'assets/img/qr code.png',
+    //   appName: 'QR Code'
+    // },{
+    //   img: 'assets/img/คืนเบิกวัตถุดิบ.png',
+    //   appName: 'ระบบคืนเบิกวัตถุดิบ'
+    // },{
+    //   img: 'assets/img/จับเวลาการผลิต.png',
+    //   appName: 'ระบบจับเวลาการผลิต'
+    // },{
+    //   img: 'assets/img/จัดการวัตถุดิบ.png',
+    //   appName: 'ระบบจัดการวัตถุดิบ'
+    // },{
+    //   img: 'assets/img/ระบบจัดการบุคคล.png',
+    //   appName: 'ระบบจัดการบุคคล'
+    // },{
+    //   img: 'assets/img/การสั่งซื้อ.png',
+    //   appName: 'ระบบการสั่งซื้อวัตถุดิบ'
+    // }];
 
     // this.menuEmp = [{
     //   imgSrc: 'assets/img/ใบสรุปปัญหาเฉพาะหน้า.png',
@@ -94,6 +111,7 @@ export class mainComponent {
 }
 
 interface IMenu {
+  id?: number,
   userId?: string,
   groupId?: number,
   groupName?: string,
