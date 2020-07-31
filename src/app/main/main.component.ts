@@ -36,10 +36,10 @@ export class mainComponent {
   public slides = [
     'First slide',
     'Second slide',
-    'Third slide',
-    'Fourth slide',
-    'Fifth slide',
-    'Sixth slide'
+    // 'Third slide',
+    // 'Fourth slide',
+    // 'Fifth slide',
+    // 'Sixth slide'
   ];
   constructor(private kmapService: KmapService) {
 
@@ -96,6 +96,11 @@ export class mainComponent {
     console.log('Swiper index: ', index);
   }
   
+  private pagination: SwiperPaginationInterface = {
+    el: '.swiper-pagination',
+    clickable: true,
+    hideOnClick: false
+  };
 }
 
 interface IMenu {
