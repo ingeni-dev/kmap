@@ -1,6 +1,6 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
-    font-size:14px ;
+    font-size:16px ;
 }
 .white-background{
     display: flex;
@@ -117,5 +117,7 @@
 }
 
 .allapp{
-    margin-top: 0rem;
+    text-align: center;
+    vertical-align: middle; 
+    justify-content:space-around;
 }
