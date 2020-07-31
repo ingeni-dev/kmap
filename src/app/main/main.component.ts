@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { KmapService } from '../services/kmap.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject, fromEvent } from 'rxjs';
+import { map, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
+  SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'main',
@@ -10,104 +13,89 @@ import { Observable } from 'rxjs';
 
 export class mainComponent {
   title = '';
-  searchText = '';
+  checkBtn = 'all';
+  // searchText = '';
+  searchText = new Subject<string>();
   userDetail: any;
-
-  menuAdmin: IMenu[]; 
+  menuObject: IMenu[];
+  menuAdmin: IMenu[];
   //menuEmp: EmpMenu[];
 
+  @ViewChild('searchMenu', { static: true }) searchMenuInput: ElementRef;
+
+  public config: SwiperConfigInterface = {
+    direction: 'horizontal',
+    slidesPerView: 1,
+    keyboard: false,
+    mousewheel: true,
+    scrollbar: false,
+    navigation: false,
+    pagination: true
+  };
+
+  public slides = [
+    'First slide',
+    'Second slide',
+    'Third slide',
+    'Fourth slide',
+    'Fifth slide',
+    'Sixth slide'
+  ];
   constructor(private kmapService: KmapService) {
-    
+
   }
 
 
   ngOnInit() {
-    
-    debugger;
     this.userDetail = JSON.parse(localStorage.getItem('userDetail'));
     console.log(this.userDetail);
     this.getMockMenu();
-    
-    
+
+
     // this.kmapService.getTest().then(res=>{
     //   console.log(res);
     // })
+
+    fromEvent(this.searchMenuInput.nativeElement, 'keyup').pipe(
+
+      // get value
+      map((event: any) => {
+        return event.target.value;
+      })
+      // if character length greater then 2
+      // , filter(res => res.length > 2)
+
+      // Time in milliseconds between key events
+      , debounceTime(400)
+
+      // If previous query is diffent from current   
+      , distinctUntilChanged()
+
+      // subscription for response
+    ).subscribe((text: string) => {
+
+      this.onSearchChanged(text);
+
+    });
   }
 
   getMockMenu() {
-    this.kmapService.getMenuItem('620049').subscribe(result=>{
+    this.kmapService.getMenuItem('620049','620049').subscribe(result => {
       console.log(result);
-      
-
-       this.menuAdmin = [...result];
-       console.log('menuAdmin', this.menuAdmin);
+      this.menuObject = [...result as IMenu[]];
+      this.menuAdmin = [...result as IMenu[]];
+      console.log('menuAdmin', this.menuAdmin);
     })
-    // this.menuAdmin = [{
-    //   img: 'assets/img/ใบสรุปปัญหาเฉพาะหน้า.png',
-    //   appName: 'ใบสรุปปัญหาเฉพาะหน้า'
-    // }, {
-    //   img: 'assets/img/เอกสารควบคุมการเปลี่ยนแปลง.png',
-    //   appName: 'เอกสารควบคุมการเปลี่ยนแปลง'
-    // }, {
-    //   img: 'assets/img/ยอดขาย.png',
-    //   appName: 'ยอดขาย'
-    // },{
-    //   img: 'assets/img/qr code.png',
-    //   appName: 'QR Code'
-    // },{
-    //   img: 'assets/img/คืนเบิกวัตถุดิบ.png',
-    //   appName: 'ระบบคืนเบิกวัตถุดิบ'
-    // },{
-    //   img: 'assets/img/จับเวลาการผลิต.png',
-    //   appName: 'ระบบจับเวลาการผลิต'
-    // },{
-    //   img: 'assets/img/จัดการวัตถุดิบ.png',
-    //   appName: 'ระบบจัดการวัตถุดิบ'
-    // },{
-    //   img: 'assets/img/ระบบจัดการบุคคล.png',
-    //   appName: 'ระบบจัดการบุคคล'
-    // },{
-    //   img: 'assets/img/การสั่งซื้อ.png',
-    //   appName: 'ระบบการสั่งซื้อวัตถุดิบ'
-    // }];
-
-    // this.menuEmp = [{
-    //   imgSrc: 'assets/img/ใบสรุปปัญหาเฉพาะหน้า.png',
-    //   menuName: 'ใบสรุปปัญหาเฉพาะหน้า'
-    // }, {
-    //   imgSrc: 'assets/img/เอกสารควบคุมการเปลี่ยนแปลง.png',
-    //   menuName: 'เอกสารควบคุมการเปลี่ยนแปลง'
-    // },
-    // // }, {
-    // //   imgSrc: 'assets/img/ยอดขาย.png',
-    // //   menuName: 'ยอดขาย'
-    // // },{
-    //   {
-    //   imgSrc: 'assets/img/qr code.png',
-    //   menuName: 'QR Code'
-    //   }
-    // // },{
-    // //   imgSrc: 'assets/img/คืนเบิกวัตถุดิบ.png',
-    // //   menuName: 'ระบบคืนเบิกวัตถุดิบ'
-    // // },{
-    //   ,{
-    //   imgSrc: 'assets/img/จับเวลาการผลิต.png',
-    //   menuName: 'ระบบจับเวลาการผลิต'
-    // },{
-    //   imgSrc: 'assets/img/จัดการวัตถุดิบ.png',
-    //   menuName: 'ระบบจัดการวัตถุดิบ'
-    // },
-    // // },{
-    // //   imgSrc: 'assets/img/ระบบจัดการบุคคล.png',
-    // //   menuName: 'ระบบจัดการบุคคล'
-    // // },
-    // {
-    //   imgSrc: 'assets/img/การสั่งซื้อ.png',
-    //   menuName: 'ระบบการสั่งซื้อวัตถุดิบ'
-    // }];
-
 
   }
+  onSearchChanged(searchText: string) {
+    this.menuAdmin = this.menuObject.filter(r => r.appName.includes(searchText));
+  }
+
+  public onIndexChange(index: number) {
+    console.log('Swiper index: ', index);
+  }
+  
 }
 
 interface IMenu {
@@ -116,17 +104,13 @@ interface IMenu {
   groupId?: number,
   groupName?: string,
   appId?: number,
-  appName?: string,
+  appName: string,
   url?: string,
   img?: string,
   userManualPath?: string
 }
 
-// interface IMenu {
-//   imgSrc: string,
-//   menuName: string
-// }
-// interface EmpMenu{
-//   imgSrc: string;
-//   menuName: string;
-// }
+// this.menuAdmin = [{
+//   img: 'assets/img/ใบสรุปปัญหาเฉพาะหน้า.png',
+//   appName: 'ใบสรุปปัญหาเฉพาะหน้า'
+// }]

@@ -4,7 +4,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DragScrollModule } from 'ngx-drag-scroll';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +22,12 @@ import { loginComponent } from './login/login.component';
 import { AlertModule } from 'ngx-bootstrap/Alert';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +44,11 @@ import { ToastrModule } from 'ngx-toastr';
     FlexLayoutModule,
     FormsModule,
     AlertModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    SelectDropDownModule,
+    BrowserAnimationsModule,
     DragScrollModule,
+    SwiperModule,
     ToastrModule.forRoot({
       timeOut: 2500,
       positionClass: 'toast-top-center',
@@ -42,7 +57,10 @@ import { ToastrModule } from 'ngx-toastr';
       progressAnimation: 'decreasing',
     }),
   ],
-  providers: [],
+  providers: [{
+    provide: SWIPER_CONFIG,
+    useValue: DEFAULT_SWIPER_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

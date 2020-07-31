@@ -36,6 +36,8 @@
     "moment": "^2.24.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-drag-scroll": "^9.0.0-beta.2",
+    "ngx-select-dropdown": "^1.4.3",
+    "ngx-swiper-wrapper": "^9.0.1",
     "ngx-toastr": "^12.1.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",

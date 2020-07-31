@@ -13,14 +13,19 @@ export class KmapService {
   constructor(private http: HttpClient,private extensionsService:ExtensionsService) {}
   
 
-  getMenuItem(data:string){
+  getMenuItem(data1:string,data2:string){
     console.log('asd')
     // let model = { user_id:data,
     //               password: '0',
     //               org:'OPP'};
-    let model = {};
-    return this.http.post('http://localhost:5000/api/test/','');
+    let model = {
+      // fn: "returnApp",
+      // UserId: data1
+    };
+    
+    return this.http.post('http://localhost:5000/api/test/',model);
   }
+
 
   getTest(){
     let result;

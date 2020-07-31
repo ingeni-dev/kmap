@@ -47,6 +47,7 @@ constructor(private router: Router,
   private authService: AuthService,
   private toastrService: ToastrService){}
 onClick(){
+
   console.log('1');
   if(this.model.userId==='admin'){
     this.userDetail = this.responseAdmin.user;
