@@ -44,28 +44,28 @@
         <div class="all col-12">
             <div class="everyButton">
 
-                <button (click)="checkBtn='all'"
+                <button (click)="getMockMenu('all')"
                     [ngClass]="{'blueButton': checkBtn === 'all','whiteButton': checkBtn != 'all'}">
                     <img *ngIf="checkBtn ==='all'" src="assets/img/all.png" class="img-fluid">
                     <img *ngIf="checkBtn !== 'all'" src="assets/img/allblack.png" class="img-fluid">
                     ทั้งหมด
                 </button>
 
-                <button (click)="checkBtn='doc'"
+                <button (click)="getMockMenu('doc')"
                     [ngClass]="{'blueButton': checkBtn === 'doc','whiteButton': checkBtn != 'doc'}">
                     <img *ngIf="checkBtn ==='doc'" src="assets/img/documentwhite.png" class="img-fluid">
                     <img *ngIf="checkBtn !== 'doc'" src="assets/img/document.png" class="img-fluid">
                     เอกสาร
                 </button>
 
-                <button (click)="checkBtn='repair'"
+                <button (click)="getMockMenu('repair')"
                     [ngClass]="{'blueButton': checkBtn === 'repair','whiteButton': checkBtn != 'repair'}">
                     <img *ngIf="checkBtn ==='repair'" src="assets/img/repairwhite.png" class="img-fluid">
                     <img *ngIf="checkBtn !== 'repair'" src="assets/img/repair.png" class="img-fluid">
                     การซ่อม
                 </button>
 
-                <button (click)="checkBtn='stat'"
+                <button (click)="getMockMenu('sale')"
                     [ngClass]="{'blueButton': checkBtn === 'stat','whiteButton': checkBtn != 'stat'}">
                     <img *ngIf="checkBtn ==='stat'" src="assets/img/statwhite.png" class="img-fluid">
                     <img *ngIf="checkBtn !== 'stat'" src="assets/img/static.png" class="img-fluid">

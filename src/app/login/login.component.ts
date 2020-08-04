@@ -86,6 +86,7 @@ onClick(){
 }
   loading: Boolean = false;
   login() {
+    
     this.loading = true;
     this.authService.login(this.model).subscribe(next => {
       this.toastrService.success('เข้าสู่ระบบเรียบร้อย');
@@ -94,7 +95,7 @@ onClick(){
 
       this.loading = false;
     }, () => {
-      this.router.navigate(['auth/layout']);
+      this.router.navigate(['/layout']);
       this.loading = false;
     });
   }

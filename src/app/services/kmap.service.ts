@@ -13,23 +13,25 @@ export class KmapService {
   constructor(private http: HttpClient,private extensionsService:ExtensionsService) {}
   
 
-  getMenuItem(data1:string,data2:string){
+  getMenuItem(userData:string,typeData:string){
+    // debugger;
     console.log('asd')
     // let model = { user_id:data,
     //               password: '0',
     //               org:'OPP'};
     let model = {
-      // fn: "returnApp",
-      // UserId: data1
+      fn:"getMockMenu",
+      typeButton: typeData,
+      user_id:userData
     };
     
-    return this.http.post('http://localhost:5000/api/test/',model);
+    return this.http.post('http://192.168.55.53:1188/api/test/',model);
   }
 
 
   getTest(){
     let result;
-    const http = this.http.get('http://localhost:5000/api/test',{observe:"response"});
+    const http = this.http.get('http://192.168.55.53:1188/api/test',{observe:"response"});
 
     return http.toPromise();
   }
