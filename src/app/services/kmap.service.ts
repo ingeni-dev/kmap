@@ -21,7 +21,7 @@ export class KmapService {
     //               org:'OPP'};
     let model = {
       fn:"getMockMenu",
-      typeButton: typeData,
+      group_id: typeData,
       user_id:userData
     };
     

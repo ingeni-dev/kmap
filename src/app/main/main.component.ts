@@ -19,7 +19,7 @@ export class mainComponent {
   checkBtn = 'all';
   // searchText = '';
   searchText = new Subject<string>();
-  typeButton = 'all';
+  group_id = 'all';
   user_id='';
   userDetail: any;
   fiterText = '';
@@ -57,7 +57,7 @@ export class mainComponent {
   ngOnInit() {
     this.userDetail = JSON.parse(localStorage.getItem('userDetail'));
     console.log(this.userDetail);
-    this.getMockMenu(this.typeButton);
+    this.getMockMenu(this.group_id);
 
 
     // this.kmapService.getTest().then(res=>{
@@ -91,10 +91,10 @@ export class mainComponent {
     
   // }
 
-  getMockMenu(typeButton:string) {
+  getMockMenu(group_id:string) {
     
     this.user_id = window.localStorage.getItem('userId');
-    this.kmapService.getMenuItem(this.user_id, typeButton).subscribe(result => {
+    this.kmapService.getMenuItem(this.user_id, group_id).subscribe(result => {
       console.log('result ja', result);
       this.menuObject = [...result as IMenu[]];
       this.onSearchChanged(this.fiterText);
