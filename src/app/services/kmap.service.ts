@@ -19,13 +19,16 @@ export class KmapService {
     // let model = { user_id:data,
     //               password: '0',
     //               org:'OPP'};
+    
     let model = {
       fn:"getMockMenu",
       group_id: typeData,
       user_id:userData
     };
     
-    return this.http.post('http://192.168.55.53:1188/api/test/',model);
+    // return this.http.post('http://192.168.55.53:1188/api/test/',model);
+    //return this.http.post('https://localhost:5001/api/test',model);
+    return this.http.post('https://localhost:5001/menu',model);
   }
 
 

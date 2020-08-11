@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivationEnd, ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'header',
@@ -11,18 +12,19 @@ export class headerComponent {
   // @Input() titleName;
   // @Input() positionName;
   // test;
-  title = 'ภรณ์ทิพย์ ชัยรักษ์สิริกุล';
-  userPosition = 'Programmer';
+  title: string;
+  userPosition: string;
   ngOnInit(){
-    console.log(this.userDetail);
-    this.title = this.userDetail.user_name;
-    this.userPosition = this.userDetail.unit_desc;
+    this.title = this.auth.getCurrentUser();
+    // console.log(this.userDetail);
+    // this.title = this.userDetail.user_name;
+    // this.userPosition = this.userDetail.unit_desc;
     // console.log(this.titleName);
     // this.title = this.titleName;
     // this.userPosition=this.positionName;
     // this.test = localStorage.getItem('userDetail');
   }
-  constructor(private router: Router){
+  constructor(private router: Router, private auth: AuthService){
 
   }
   onClick(){

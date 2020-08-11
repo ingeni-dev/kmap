@@ -22,6 +22,8 @@ import { loginComponent } from './login/login.component';
 import { AlertModule } from 'ngx-bootstrap/Alert';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { MenurenderComponent } from './menurender/menurender.component';
+import { ErrorInterceptorProvider } from './services/error.interceptor';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -35,7 +37,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     mainComponent,
     footerComponent,
     loginComponent,
-    layoutComponent
+    layoutComponent,
+    MenurenderComponent
   ],
   imports: [
     BrowserModule,

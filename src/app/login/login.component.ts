@@ -46,6 +46,7 @@ responseAdmin = {
 constructor(private router: Router,
   private authService: AuthService,
   private toastrService: ToastrService){}
+  
 onClick(){
 
   console.log('1');
@@ -85,19 +86,21 @@ onClick(){
 
 }
   loading: Boolean = false;
+ 
   login() {
     
     this.loading = true;
-    this.authService.login(this.model).subscribe(next => {
-      this.toastrService.success('เข้าสู่ระบบเรียบร้อย');
-    }, error => {
-      this.toastrService.error('เข้าสู่ระบบไม่ถูกต้อง');
-
-      this.loading = false;
-    }, () => {
-      this.router.navigate(['/layout']);
-      this.loading = false;
-    });
+    this.authService.login(this.model);
+    
+    // .subscribe(next => {
+    //   this.toastrService.success('เข้าสู่ระบบเรียบร้อย');
+    // }, error => {
+    //   this.toastrService.error('เข้าสู่ระบบไม่ถูกต้อง');
+    //   this.loading = false;
+    // }, () => {
+    //   this.router.navigate(['/layout']);
+    //   this.loading = false;
+    // });
   }
 }
  interface loginForm{

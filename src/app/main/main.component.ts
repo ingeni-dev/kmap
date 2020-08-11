@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, TemplateRef, ViewContainerRef } from '@angular/core';
 import { KmapService } from '../services/kmap.service';
 import { Observable, Subject, fromEvent } from 'rxjs';
 import { map, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -7,6 +7,8 @@ import {
   SwiperScrollbarInterface, SwiperPaginationInterface
 } from 'ngx-swiper-wrapper';
 import { type } from 'os';
+import Swiper from 'swiper';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'main',
@@ -16,10 +18,10 @@ import { type } from 'os';
 
 export class mainComponent {
   title = '';
-  checkBtn = 'all';
+  checkBtn = 'ALL';
   // searchText = '';
   searchText = new Subject<string>();
-  group_id = 'all';
+  group_id = 'ALL';
   user_id='';
   userDetail: any;
   fiterText = '';
@@ -27,6 +29,11 @@ export class mainComponent {
   menuObject: IMenu[];
   menuAdmin: IMenu[];
   //menuEmp: EmpMenu[];
+
+  swiper: any;
+
+  @ViewChild("outlet", { read: ViewContainerRef }) outletRef: ViewContainerRef;
+  @ViewChild("content", {read: TemplateRef}) contentRef: TemplateRef<any>;
   
 
   @ViewChild('searchMenu', { static: true }) searchMenuInput: ElementRef;
@@ -41,19 +48,15 @@ export class mainComponent {
     pagination: true
   };
 
-  public slides = [
-    'First slide',
-    'Second slide',
-    // 'Third slide',
-    // 'Fourth slide',
-    // 'Fifth slide',
-    // 'Sixth slide'
-  ];
+  public slides = [];
   constructor(private kmapService: KmapService) {
 
   }
 
-
+  private rerender() {
+    this.outletRef.clear();
+    this.outletRef.createEmbeddedView(this.contentRef);
+  }
   ngOnInit() {
     this.userDetail = JSON.parse(localStorage.getItem('userDetail'));
     console.log(this.userDetail);
@@ -92,12 +95,12 @@ export class mainComponent {
   // }
 
   getMockMenu(group_id:string) {
-    
+    this.checkBtn=group_id;
     this.user_id = window.localStorage.getItem('userId');
     this.kmapService.getMenuItem(this.user_id, group_id).subscribe(result => {
       console.log('result ja', result);
       this.menuObject = [...result as IMenu[]];
-      this.onSearchChanged(this.fiterText);
+      this.onSearchChanged(this.fiterText);      
       // this.menuAdmin = [...result as IMenu[]];
       //this.menuAdmin = [...result as IMenu[]];
     //    = [{
@@ -163,6 +166,17 @@ export class mainComponent {
 
   onSearchChanged(searchText: string) {
     this.menuAdmin = this.menuObject.filter(r => r.appName.includes(searchText));
+    this.onMenuChanged();    
+  }
+
+  onMenuChanged() {
+    this.slides = [];
+
+    for(let i = 0; i < Math.ceil(this.menuAdmin.length / 9); i++)
+    {
+      this.slides.push(i.toString());
+    }
+    this.rerender();
   }
 
   public onIndexChange(index: number) {
