@@ -20,16 +20,23 @@ export class AuthService {
     private toastrService: ToastrService) { }
 
   login(model: any) {
-    // const payload = new HttpParams()
-    //   .set('user', model.userId)
-    //   .set('pwd', model.pass);
+    const payload2 = new HttpParams()
+      .set('user', model.userId)
+      .set('pwd', model.pass);
 
     const payload = {
       username : model.userId,
       password: model.pass
     }
 
-    debugger;
+    window.open("http://portal.kimpai.com/portal/loginJWT.aspx?token=dfsdfsdf", "_blank");
+
+    // this.http.post("http://portal.kimpai.com/portal/service/login.ashx", payload2).subscribe(response => {
+    //   debugger;
+    //   console.log(response);
+    // });
+
+
     this.http.post(this.baseUrl, payload).subscribe(response => {
       if (response && response['token']) {
         localStorage.setItem('userId', response['userID']); //เก็บข้อมูลใน localstorage 
