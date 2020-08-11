@@ -27,4 +27,8 @@ export class MenurenderComponent implements OnChanges  {
     console.log('slide changed', this.slides);
   }
 
+  onMenuClicked(urlPath: string) {
+    window.open(urlPath, "_blank");
+  }
+
 }

@@ -15,7 +15,7 @@ export class KmapService {
 
   getMenuItem(userData:string,typeData:string){
     // debugger;
-    console.log('asd')
+    //console.log('asd')
     // let model = { user_id:data,
     //               password: '0',
     //               org:'OPP'};

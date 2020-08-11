@@ -93,10 +93,11 @@ export class mainComponent {
   // filterMenu(type:string){
     
   // }
-
+  
   getMockMenu(group_id:string) {
     this.checkBtn=group_id;
     this.user_id = window.localStorage.getItem('userId');
+
     this.kmapService.getMenuItem(this.user_id, group_id).subscribe(result => {
       console.log('result ja', result);
       this.menuObject = [...result as IMenu[]];

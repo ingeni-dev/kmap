@@ -31,7 +31,7 @@ h1{
     height: 2rem;
     float: left;
     line-height: 2rem;
-    text-align: center;
+    padding-left: 2rem;
 }
 .img-fluid{
     max-width: 100%;

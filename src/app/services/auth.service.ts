@@ -32,28 +32,37 @@ export class AuthService {
     debugger;
     this.http.post(this.baseUrl, payload).subscribe(response => {
       if (response && response['token']) {
-        localStorage.setItem('userId', response['emP_ID']);
-        localStorage.setItem('userName', response['emP_NAME']);
+        localStorage.setItem('userId', response['userID']); //เก็บข้อมูลใน localstorage 
+        localStorage.setItem('userName', response['userName']);
         localStorage.setItem('email', response['email']);
         localStorage.setItem('nickname', response['nickname']);
-        localStorage.setItem('orgId', response['orG_ID']);
-        localStorage.setItem('posRole', response['poS_ROLE']);
+        localStorage.setItem('orgId', response['org']);
+        localStorage.setItem('posRole', response['posrole']);
         localStorage.setItem('token', response['token']);
         this.toastrService.success('เข้าสู่ระบบเรียบร้อย');
         this.router.navigate(['/layout']);
       }else{
         this.toastrService.error('เข้าสู่ระบบไม่ถูกต้อง');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login']); //ก่อนประกาศเชื่อมหน้า router.navigate ต้องประกาศ private router: Router ก่อน
       }
     });
   }
 
  getCurrentUser() {
-   return localStorage.getItem('userId');
- }             
+   return localStorage.getItem('userName'); //ดึงข้อมูลออกมา
+  
+ }   
+ getPositionUser(){
+  return localStorage.getItem('userId');
+ }          
 
   loggedIn() {
     const token = localStorage.getItem('token');
+
+    if (!token) {
+      return false;
+    }
+
     if (this.jwtHelper.isTokenExpired(token)) {
       this.logOut();
       return false;
@@ -67,6 +76,7 @@ export class AuthService {
     localStorage.removeItem('org');
     localStorage.removeItem('mattypeList');
     localStorage.removeItem('custList');
+    this.router.navigate(['/login']);
   }
 
 

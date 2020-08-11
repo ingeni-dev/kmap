@@ -13,9 +13,10 @@ export class headerComponent {
   // @Input() positionName;
   // test;
   title: string;
-  userPosition: string;
+  positionDetail: string;
   ngOnInit(){
     this.title = this.auth.getCurrentUser();
+    this.positionDetail=this.auth.getPositionUser();
     // console.log(this.userDetail);
     // this.title = this.userDetail.user_name;
     // this.userPosition = this.userDetail.unit_desc;

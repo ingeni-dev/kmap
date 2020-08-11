@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,12 +24,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { MenurenderComponent } from './menurender/menurender.component';
 import { ErrorInterceptorProvider } from './services/error.interceptor';
+import { environment } from 'src/environments/environment';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
 };
 
+export function jwtOptionsFactory() {
+  return {
+    tokenGetter: () => {
+      return localStorage.getItem('token'); //เก็บtoken
+    },
+    whitelistedDomains: environment.whitelist, //คือพาทที่จะส่งtokenแนบไปด้วย
+    blacklistedRoutes: environment.blacklisted //คือพาทที่ไม่ต้องส่ง jwt พวกที่ลงท้ายด้วย auth เชื่อมกับ environment
+  }
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +68,12 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       preventDuplicates: true,
       progressBar: true,
       progressAnimation: 'decreasing',
+    }),
+    JwtModule.forRoot({
+      jwtOptionsProvider:{
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory
+      }
     }),
   ],
   providers: [{
