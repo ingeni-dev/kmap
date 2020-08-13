@@ -36,5 +36,8 @@ export class headerComponent {
     localStorage.removeItem('userDetail');
     localStorage.removeItem('positionDetail');
   }
-}
+logOut()
+{
+  this.auth.logOut();
+}}
 

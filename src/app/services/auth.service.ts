@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  // baseUrl = environment.apiUrl + 'auth/';
-  baseUrl = 'https://localhost:5001/users/login';
+  baseUrl = environment.apiUrl + 'users/login';
+  //baseUrl = 'http://localhost:5000/users/login';
   // baseUrl = 'http://portal.kimpai.com/portal/service/login.ashx';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
@@ -29,7 +29,7 @@ export class AuthService {
       password: model.pass
     }
 
-    window.open("http://portal.kimpai.com/portal/loginJWT.aspx?token=dfsdfsdf", "_blank");
+   // window.open("http://portal.kimpai.com/portal/loginJWT.aspx?token=dfsdfsdf", "_blank");
 
     // this.http.post("http://portal.kimpai.com/portal/service/login.ashx", payload2).subscribe(response => {
     //   debugger;
@@ -62,6 +62,9 @@ export class AuthService {
  getPositionUser(){
   return localStorage.getItem('userId');
  }          
+getToken(){
+  return localStorage.getItem('token');
+}
 
   loggedIn() {
     const token = localStorage.getItem('token');
