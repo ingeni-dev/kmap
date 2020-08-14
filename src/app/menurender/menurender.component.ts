@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menurender',
@@ -21,7 +22,7 @@ export class MenurenderComponent implements OnChanges  {
     pagination: true
   };
 
-  constructor(private auth : AuthService) { }
+  constructor(private auth : AuthService, private router: Router) { }
   
   ngOnChanges() {
     // create header using child_id
@@ -29,7 +30,9 @@ export class MenurenderComponent implements OnChanges  {
   }
 
   onMenuClicked(urlPath: string) {
-    window.open(urlPath + "?token=" + this.auth.getToken(), "_blank");
+    this.router.navigate(['/apprender', { path: urlPath }]);
+    // const path = urlPath + "?token=" + this.auth.getToken();
+    // window.open(path, "_blank");
   }
 
 }

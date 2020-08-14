@@ -25,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MenurenderComponent } from './menurender/menurender.component';
 import { ErrorInterceptorProvider } from './services/error.interceptor';
 import { environment } from 'src/environments/environment';
+import { ApprenderComponent } from './apprender/apprender.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -48,7 +49,8 @@ export function jwtOptionsFactory() {
     footerComponent,
     loginComponent,
     layoutComponent,
-    MenurenderComponent
+    MenurenderComponent,
+    ApprenderComponent
   ],
   imports: [
     BrowserModule,
