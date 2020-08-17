@@ -26,6 +26,7 @@ import { MenurenderComponent } from './menurender/menurender.component';
 import { ErrorInterceptorProvider } from './services/error.interceptor';
 import { environment } from 'src/environments/environment';
 import { ApprenderComponent } from './apprender/apprender.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -77,6 +78,7 @@ export function jwtOptionsFactory() {
         useFactory: jwtOptionsFactory
       }
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [{
     provide: SWIPER_CONFIG,
