@@ -30,7 +30,7 @@
     text-align: center;
     vertical-align: middle;
 }
-.Message{
+/* .Message{
     width: 3.125rem;
     height: 3.125rem;
     padding: 0.125rem 0.125rem;
@@ -90,7 +90,7 @@
     color: #7D7D7D;
     text-align: center;
     vertical-align: middle;
-}
+} */
 .img-fluid{
     max-width: 100%;
     height: auto;
