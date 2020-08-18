@@ -5,7 +5,7 @@
   "background_color": "linear-gradient( #2E3448,#400D44)",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/kamp/",
+  "start_url": "/kmap/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
