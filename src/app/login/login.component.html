@@ -37,7 +37,7 @@
                     <img src="assets/img/password.png" style="width: 15px; height: 15px;" class="icon">
                 </div>
                 <div class="formBox">
-                    <input class="password" type="password" style="border: none; font-size: 1em;" placeholder="รหัสผ่าน" [(ngModel)]="model.pass" >
+                    <input class="password" type="password" style="border: none; font-size: 1em;" placeholder="รหัสผ่าน" [(ngModel)]="model.pass" (keypress)="keyEnter($event)">
                 </div>
 
             </div>
