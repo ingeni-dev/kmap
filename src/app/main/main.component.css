@@ -7,7 +7,7 @@
   background-color: white;
   background-size: cover;
   height: 100%;
-  position: fixed;
+  /* position: fixed; */
   margin-top: 0vh;
   border-radius: 0rem 2rem 0rem 0rem;
 }
@@ -63,7 +63,7 @@
   background: white;
   box-shadow: 0rem 0.25rem 0.25rem 0rem #8a8b8f;
   margin: 8px 8px;
-  width: 6.25rem;
+  /* width: 6.25rem; */
   align-content: center;
   align-items: center;
   justify-content: center;
@@ -77,13 +77,13 @@
   color: white;
   box-shadow: 0rem 0.25rem 0.25rem 0rem #8a8b8f;
   margin: 0.9375rem 0.625rem;
-  width: 6.25rem;
+  /* width: 6.25rem; */
   align-content: center;
   align-items: center;
   justify-content: center;
 }
 .everyButton {
-  width: 100%;
+  /* width: 100%; */
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
