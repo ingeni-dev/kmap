@@ -22,8 +22,10 @@ export class MenuService {
   nowMenu = history.state;
   slides = [];
   groupList = ['ALL', '1', '2', '3'];
+  category = ['ทั้งหมด', 'เอกสาร', 'การซ่อม', 'ยอดขาย'];
   groupPos = 0;
   groupSelected: string;
+
 
   subject = new Subject<string>();
 
@@ -46,8 +48,7 @@ export class MenuService {
   }
 
   filterGroup(groupNames: string) {
-    let category: string[] = ['ทั้งหมด', 'เอกสาร', 'การซ่อม', 'ยอดขาย'];
-    let group: string = (groupNames == 'ALL') ? 'ทั้งหมด' : category[groupNames];
+    let group: string = (groupNames == 'ALL') ? 'ทั้งหมด' : this.category[groupNames];
     this.currentMenu = this.fullMenu.filter(r => r.groupName.toUpperCase().includes(group.toUpperCase()));
     this.menu.next(this.currentMenu);
     this.menuSeacrch.next(this.currentMenu);

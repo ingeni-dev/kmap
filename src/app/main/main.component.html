@@ -1,5 +1,5 @@
-<div class="white-background container">
-  <div class="row search">
+<div class="white-background flex-column">
+  <div class="search">
     <div class="col-10 inputBox" style="display: flex">
       <input
         type="text"
@@ -15,12 +15,11 @@
       </div>
     </div>
   </div>
-  <div class="row category">
+  <div class="category">
     <div class="everyButton">
       <button
         (click)="onGroupsFilter('ALL')"
         [ngClass]="{
-
           blueButton: checkBtn == 'ALL',
           whiteButton: checkBtn != 'ALL'
         }"

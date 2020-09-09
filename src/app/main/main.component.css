@@ -3,13 +3,16 @@
   font-size: 16px;
 } */
 .white-background {
+  position: fixed;
   display: flex;
   background-color: white;
   background-size: cover;
   height: 100%;
+  width: 100%;
   /* position: fixed; */
   margin-top: 0vh;
   border-radius: 0rem 2rem 0rem 0rem;
+  margin-top: 88px;
 }
 
 .search {
@@ -40,7 +43,6 @@
   font-size: 1em;
   padding-left: 1em;
   padding-right: 1em;
-  height: 60px;
   margin-top: 2px;
 }
 .auto {

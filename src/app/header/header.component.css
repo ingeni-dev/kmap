@@ -4,6 +4,8 @@ h1 {
   font-size: 22px;
 }
 .header {
+  position: fixed;
+  z-index: 10;
   display: flex;
   justify-content: start;
   padding-bottom: 10px;

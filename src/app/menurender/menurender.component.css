@@ -20,7 +20,6 @@
 }
 
 .img-fluid {
-  max-width: 100%;
   height: auto;
 }
 .inputBox {
@@ -98,25 +97,32 @@
   float: center;
   padding-bottom: 0;
 }
-.swiper-container {
+/* .swiper-container {
   display: flex;
   position: fixed;
   top: 38vh;
   right: 0;
   bottom: 6vh;
   left: 0;
-}
+} */
 
 .allapp {
+  margin-block-start: auto;
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 99;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: auto;
   justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
+  justify-self: center;
+  align-self: center;
   overflow-y: scroll;
+  width: 100%;
   height: 100vh;
   scroll-behavior: smooth;
-  padding-bottom: 200px;
+  padding-bottom: 260px;
 }
 .txt-icon {
   width: 100%;
@@ -125,6 +131,6 @@
   text-overflow: ellipsis;
   height: 20px;
   line-height: 20px;
-  font-family: 'promptregular';
-  font-size:10pt;
+  font-family: "promptregular";
+  font-size: 10pt;
 }
