@@ -1,4 +1,5 @@
 .layout {
+    position: fixed;
     display: flex;
     flex-direction: column;
     /* border: green 2px solid; */
