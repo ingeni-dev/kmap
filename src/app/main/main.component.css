@@ -69,6 +69,7 @@
   align-content: center;
   align-items: center;
   justify-content: center;
+  outline: none;
 }
 .blueButton {
   font-family: "promptregular";
@@ -83,6 +84,7 @@
   align-content: center;
   align-items: center;
   justify-content: center;
+  outline: none;
 }
 .everyButton {
   /* width: 100%; */
