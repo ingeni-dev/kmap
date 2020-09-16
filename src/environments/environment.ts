@@ -13,11 +13,9 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'http://192.168.55.53:1189/api/',
-  apiUrl: 'https://localhost:5001/',
-  // apiUrl: 'https://portal.kimpai.com/dotnetcore/kmapBack-end/',
-  // apiUrl:'https://portal.kimpai.com/dotnetcore/kmapBack-end/',
-  whitelist: ['192.168.55.53:1189', '192.168.55.76','localhost:5001'],
+  apiUrl: 'https://portal.kimpai.com/dotnetcore/kmapBack-end/',
+  // apiUrl: 'http://localhost:5000/api/',
+  whitelist: ['192.168.55.53:1189', '192.168.55.76', 'portal.kimpai.com', 'portal.kimpai.com/dotnetcore', 'portal.kimpai.com/dotnetcore/kmapBack-end'],
   blacklisted: ['192.168.55.53:1189/api','192.168.55.76/ToppWebApi/api/auth']
 };
 
