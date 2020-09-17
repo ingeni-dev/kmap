@@ -6,29 +6,26 @@ import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class KmapService {
   baseUrl = environment.apiUrl;
-  constructor(private http: HttpClient,private extensionsService:ExtensionsService) {}
+  constructor(
+    private http: HttpClient,
+    private extensionsService: ExtensionsService
+  ) {}
 
-
-  getMenuItem(userData:string,typeData:string){
-    // let model = { user_id:data,
-    //               password: '0',
-    //               org:'OPP'};
-
+  getMenuItem(userData: string, typeData: string) {
     let model = {
-      fn:"getMenuInfo",
+      fn: 'getMenuInfo',
       group_id: typeData,
-      user_id:userData
+      user_id: userData,
     };
-
+    debugger;
     // return this.http.post('http://192.168.55.53:1188/api/test/',model);
     //return this.http.post('https://localhost:5001/api/test',model);
-    return this.http.post(`${this.baseUrl}menu`,model);
+    return this.http.post(`${this.baseUrl}menu`, model);
   }
-
 
   // getTest(){
   //   let result;
@@ -36,5 +33,4 @@ export class KmapService {
 
   //   return http.toPromise();
   // }
-
 }

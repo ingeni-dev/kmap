@@ -86,7 +86,6 @@ export class mainComponent {
   ngOnInit() {
     this.subjectSub = this.menuService.subject.subscribe((data) => {
       this.checkBtn = data;
-      console.log(this.checkBtn);
       this.searchMenuInput.nativeElement.value = '';
       let scrollSlice = 0;
       if (data !== 'ALL' && data !== '1') {
@@ -148,7 +147,6 @@ export class mainComponent {
   }
 
   public onIndexChange(index: number) {
-    console.log('Swiper index: ', index);
   }
 
   getMenu($event) {
