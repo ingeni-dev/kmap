@@ -10,14 +10,32 @@ import { MenurenderComponent } from './menurender/menurender.component';
 const routes: Routes = [
   { path: 'login', component: loginComponent, canActivate: [UnauthGuard] },
   {
-    path: 'layout', component: layoutComponent, canActivate: [AuthGuard], data:{animation: 'layout'},
+    path: 'layout',
+    component: layoutComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', component: MenurenderComponent, data: { animation: 'layoutAll'}},
-      { path: 'ALL', component: MenurenderComponent, data: { animation: 'layoutAll'}},
-      { path: '1', component: MenurenderComponent, data: { animation: 'layoutDocument' } },
-      { path: '2', component: MenurenderComponent, data: { animation: 'layoutRepair' }},
-      { path: '3', component: MenurenderComponent, data: { animation: 'layoutSales' } }
-    ]
+      { path: '', component: MenurenderComponent },
+      {
+        path: 'ALL',
+        component: MenurenderComponent,
+        data: { animation: 'layoutAll' },
+      },
+      {
+        path: '1',
+        component: MenurenderComponent,
+        data: { animation: 'layoutDocument' },
+      },
+      {
+        path: '2',
+        component: MenurenderComponent,
+        data: { animation: 'layoutRepair' },
+      },
+      {
+        path: '3',
+        component: MenurenderComponent,
+        data: { animation: 'layoutSales' },
+      },
+    ],
   },
   {
     path: 'apprender',
@@ -31,4 +49,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

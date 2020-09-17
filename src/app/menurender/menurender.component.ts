@@ -51,16 +51,13 @@ export class MenurenderComponent implements OnInit {
   }
 
   onSwipeRight(event, data) {
-    console.log("event right", event);
     this.menuService.menuSwipe('right');
   }
 
   onSwipeLeft(event, data) {
-    console.log("event left", event);
     this.menuService.menuSwipe('left');
 
   }
   onSwipeUp(event) {
-    console.log("event up", event);
   }
 }
