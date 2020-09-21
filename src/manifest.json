@@ -5,7 +5,7 @@
   "background_color": "linear-gradient( #2E3448,#400D44)",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/kmap/",
+  "start_url": "/DOTNETCore/kmap/",
   "icons": [
     {
       "src": "assets/icons/icon-32x32.png",
